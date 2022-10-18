@@ -1,0 +1,12 @@
+{
+  "name": "Pixiv Tag Visualizer",
+  "description": "Visualizing Pixiv taglocks.",
+  "version": "0.1.0",
+  "manifest_version": 3,
+  "content_scripts": [
+    {
+      "js": ["tag.js"],
+      "matches": ["https://www.pixiv.net/artworks/*"]
+    }
+  ]
+}
