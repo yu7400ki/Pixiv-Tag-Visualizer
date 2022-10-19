@@ -3,6 +3,9 @@
   "description": "Visualizing author-defined tags on Pixiv",
   "version": "0.1.0",
   "manifest_version": 3,
+  "icons": {
+    "128": "icons/128.png"
+  },
   "content_scripts": [
     {
       "js": ["tag/tag.js"],
