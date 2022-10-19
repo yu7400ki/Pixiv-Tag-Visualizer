@@ -94,14 +94,16 @@ const addBadge = async (href) => {
     const tagName = link.textContent;
     if (tags[tagName]?.userId === authorId) {
       const wrapper = document.createElement("div");
+      const svg = domParser.parseFromString(checkSvg, "image/svg+xml");
       wrapper.classList.add("gg-icon-check");
-      wrapper.innerHTML = checkSvg;
+      wrapper.appendChild(svg.documentElement);
       el.appendChild(wrapper);
     }
     if (tags[tagName]?.locked) {
       const wrapper = document.createElement("div");
+      const svg = domParser.parseFromString(lockSvg, "image/svg+xml");
       wrapper.classList.add("gg-icon-lock");
-      wrapper.innerHTML = lockSvg;
+      wrapper.appendChild(svg.documentElement);
       el.appendChild(wrapper);
     }
   });
