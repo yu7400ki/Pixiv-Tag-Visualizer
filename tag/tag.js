@@ -51,10 +51,16 @@ window.addEventListener("load", () => {
   for (let i = 0; i < tagDom.length; i++) {
     const tagName = tagDom[i].innerText;
     if (tags[tagName]?.userId === authorId) {
-      tagDom[i].classList.add("author-tag");
+      const checkIcon = document.createElement("img");
+      checkIcon.src = "https://css.gg/check-o.svg";
+      checkIcon.classList.add("gg-icon");
+      tagDom[i].parentElement.appendChild(checkIcon);
     }
     if (tags[tagName].locked) {
-      tagDom[i].classList.add("locked-tag");
+      const lockIcon = document.createElement("img");
+      lockIcon.src = "https://css.gg/lock.svg";
+      lockIcon.classList.add("gg-icon");
+      tagDom[i].parentElement.appendChild(lockIcon);
     }
   }
 });
