@@ -46,5 +46,15 @@ window.addEventListener("load", () => {
   const authorId = getAuthorId(doc);
   const tags = getTags(doc);
 
-  console.log(authorId, tags);
+  const tagDom = document.getElementsByClassName("gtm-new-work-tag-event-click");
+
+  for (let i = 0; i < tagDom.length; i++) {
+    const tagName = tagDom[i].innerText;
+    if (tags[tagName]?.userId === authorId) {
+      tagDom[i].classList.add("author-tag");
+    }
+    if (tags[tagName].locked) {
+      tagDom[i].classList.add("locked-tag");
+    }
+  }
 });
