@@ -1,4 +1,48 @@
-.gg-icon {
-    height: 15px;
-    width: 15px;
+.tag-li {
+  display: inline-flex !important;
+  align-items: center;
+}
+
+[class^="gg-icon"] {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2px;
+}
+
+[class^="gg-icon"] > img {
+  height: 15px;
+  width: 15px;
+  filter: invert(45%) sepia(38%) saturate(698%) hue-rotate(159deg)
+    brightness(83%) contrast(82%);
+}
+
+[class^="gg-icon"]::before {
+  font-size: 14px;
+  text-align: center;
+  height: 20px;
+  width: calc(14px * 9);
+  border-radius: 5px;
+
+  background-color: #4b4b4b;
+  color: #fff;
+
+  display: none;
+  position: absolute;
+  top: -70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+[class^="gg-icon"]:hover::before {
+  display: block;
+}
+
+.gg-icon-check::before {
+  content: "投稿者指定のタグ";
+}
+
+.gg-icon-lock::before {
+  content: "ロックされたタグ";
 }
