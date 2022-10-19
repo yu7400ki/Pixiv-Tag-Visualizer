@@ -11,9 +11,10 @@
   margin-left: 2px;
 }
 
-[class^="gg-icon"] > img {
+[class^="gg-icon"] > svg {
   height: 15px;
   width: 15px;
+  fill: #3d7597;
   filter: invert(45%) sepia(38%) saturate(698%) hue-rotate(159deg)
     brightness(83%) contrast(82%);
 }
