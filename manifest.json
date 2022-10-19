@@ -7,7 +7,7 @@
     {
       "js": ["tag/tag.js"],
       "css": ["tag/tag.css"],
-      "matches": ["https://www.pixiv.net/artworks/*"],
+      "matches": ["*://www.pixiv.net/*"],
       "run_at": "document_start"
     }
   ]
