@@ -98,7 +98,7 @@ const addBadge = async (href) => {
 
   tagDom.forEach((el) => {
     el.classList.add("tag-li");
-    const link = el.querySelector("a");
+    const link = el.querySelector("a.gtm-new-work-tag-event-click");
     if (!link) return;
     const tagName = link.textContent;
     if (tags[tagName]?.userId === authorId) {
