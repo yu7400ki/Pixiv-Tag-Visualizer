@@ -43,7 +43,7 @@ const lockSvg = domParser.parseFromString(
 ).documentElement;
 
 const getIllustId = (href) => {
-  const illustId = href.match(/https:\/\/www.pixiv.net\/artworks\/(\d+)/);
+  const illustId = href.match(/^https:\/\/www.pixiv.net\/artworks\/(\d+)$/);
   return illustId[1];
 };
 
@@ -75,7 +75,7 @@ const sleep = (ms) => {
 };
 
 const addBadge = async (href) => {
-  if (!href.match(/https:\/\/www.pixiv.net\/artworks\/\d+/)) return;
+  if (!href.match(/^https:\/\/www.pixiv.net\/artworks\/\d+$/)) return;
   const response = await fetch(href);
   const html = await response.text();
 

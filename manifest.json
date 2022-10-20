@@ -10,7 +10,7 @@
     {
       "js": ["tag/tag.js"],
       "css": ["tag/tag.css"],
-      "matches": ["*://www.pixiv.net/*"],
+      "matches": ["https://www.pixiv.net/*"],
       "run_at": "document_start"
     }
   ]
