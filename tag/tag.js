@@ -1,42 +1,12 @@
 const domParser = new DOMParser();
 
-const _checkSvg = `<svg
-width="24"
-height="24"
-viewBox="0 0 24 24"
-fill="none"
-xmlns="http://www.w3.org/2000/svg"
->
-<path
-  d="M10.2426 16.3137L6 12.071L7.41421 10.6568L10.2426 13.4853L15.8995 7.8284L17.3137 9.24262L10.2426 16.3137Z"
-  fill="currentColor"
-/>
-<path
-  fill-rule="evenodd"
-  clip-rule="evenodd"
-  d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21Z"
-  fill="currentColor"
-/>
-</svg>`;
+const _checkSvg = `<svg role="img" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" aria-labelledby="circleOkIconTitle" stroke="#FFF" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" fill="none" color="#FFF"> <title id="circleOkIconTitle">OK</title> <polyline points="7 13 10 16 17 9"/> <circle cx="12" cy="12" r="10"/> </svg>`;
 const checkSvg = domParser.parseFromString(
   _checkSvg,
   "image/svg+xml"
 ).documentElement;
 
-const _lockSvg = `<svg
-width="24"
-height="24"
-viewBox="0 0 24 24"
-fill="none"
-xmlns="http://www.w3.org/2000/svg"
->
-<path
-  fill-rule="evenodd"
-  clip-rule="evenodd"
-  d="M18 10.5C19.6569 10.5 21 11.8431 21 13.5V19.5C21 21.1569 19.6569 22.5 18 22.5H6C4.34315 22.5 3 21.1569 3 19.5V13.5C3 11.8431 4.34315 10.5 6 10.5V7.5C6 4.18629 8.68629 1.5 12 1.5C15.3137 1.5 18 4.18629 18 7.5V10.5ZM12 3.5C14.2091 3.5 16 5.29086 16 7.5V10.5H8V7.5C8 5.29086 9.79086 3.5 12 3.5ZM18 12.5H6C5.44772 12.5 5 12.9477 5 13.5V19.5C5 20.0523 5.44772 20.5 6 20.5H18C18.5523 20.5 19 20.0523 19 19.5V13.5C19 12.9477 18.5523 12.5 18 12.5Z"
-  fill="currentColor"
-/>
-</svg>`;
+const _lockSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>`;
 const lockSvg = domParser.parseFromString(
   _lockSvg,
   "image/svg+xml"
@@ -104,12 +74,14 @@ const addBadge = async (href) => {
     if (tags[tagName]?.userId === authorId) {
       const wrapper = document.createElement("div");
       wrapper.classList.add("gg-icon-check");
+      wrapper.setAttribute("data-descr", "投稿者指定のタグ");
       wrapper.appendChild(checkSvg.cloneNode(true));
       el.appendChild(wrapper);
     }
     if (tags[tagName]?.locked) {
       const wrapper = document.createElement("div");
       wrapper.classList.add("gg-icon-lock");
+      wrapper.setAttribute("data-descr", "ロックされたタグ");
       wrapper.appendChild(lockSvg.cloneNode(true));
       el.appendChild(wrapper);
     }
