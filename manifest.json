@@ -6,11 +6,16 @@
   "icons": {
     "128": "icons/128.png"
   },
+  "action": {
+    "default_icon": "icons/128.png",
+    "default_popup": "popup/popup.html"
+  },
+  "permissions": ["storage"],
   "content_scripts": [
     {
       "js": ["tag/tag.js"],
       "css": ["tag/tag.css"],
-      "matches": ["*://www.pixiv.net/*"],
+      "matches": ["https://www.pixiv.net/*"],
       "run_at": "document_start"
     }
   ]
