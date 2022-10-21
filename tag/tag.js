@@ -133,9 +133,7 @@ const addBadge = async (href) => {
       if (setting["author-tag"]) {
         el.classList.remove("disable-tag");
       }
-    }
-
-    if (tags[tagName]?.locked) {
+    } else if (tags[tagName]?.locked) {
       other = false;
       if (setting["lock-badge"]) {
         el.appendChild(lockBadge());
