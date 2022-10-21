@@ -16,28 +16,3 @@
   width: 15px;
   stroke: #3d7597;
 }
-
-[class^="gg-icon"]::before {
-  content: attr(data-descr);
-  font-size: 14px;
-  border-radius: 5px;
-  padding: 2px 5px;
-
-  width: 120px;
-  height: 18px;
-
-  background-color: #717171;
-  color: #fff;
-
-  display: none;
-  position: absolute;
-  top: -90%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-[class^="gg-icon"]:hover::before {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}

@@ -1,12 +1,12 @@
 const domParser = new DOMParser();
 
-const _checkSvg = `<svg role="img" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" aria-labelledby="circleOkIconTitle" stroke="#FFF" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" fill="none" color="#FFF"> <title id="circleOkIconTitle">OK</title> <polyline points="7 13 10 16 17 9"/> <circle cx="12" cy="12" r="10"/> </svg>`;
+const _checkSvg = `<svg role="img" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" aria-labelledby="circleOkIconTitle" stroke="#FFF" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" fill="none" color="#FFF"> <title id="circleOkIconTitle">投稿者指定のタグ</title> <polyline points="7 13 10 16 17 9"/> <circle cx="12" cy="12" r="10"/> </svg>`;
 const checkSvg = domParser.parseFromString(
   _checkSvg,
   "image/svg+xml"
 ).documentElement;
 
-const _lockSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>`;
+const _lockSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-labelledby="lockIconTitle"><title id="lockIconTitle">ロックされたタグ</title><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>`;
 const lockSvg = domParser.parseFromString(
   _lockSvg,
   "image/svg+xml"
