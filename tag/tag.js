@@ -1,3 +1,23 @@
+chrome.storage.local.get("tag_setting", (result) => {
+  if (!result.tag_setting) {
+    const tag_setting = {
+      "author-badge": true,
+      "lock-badge": true,
+      "author-tag": true,
+      "lock-tag": true,
+      "other-tag": true,
+    };
+    chrome.storage.local.set({ tag_setting });
+  }
+});
+
+const getSetting = () =>
+  new Promise((resolve) => {
+    chrome.storage.local.get("tag_setting", (result) => {
+      resolve(result.tag_setting);
+    });
+  });
+
 const domParser = new DOMParser();
 
 const _checkSvg = `<svg role="img" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" aria-labelledby="circleOkIconTitle" stroke="#FFF" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" fill="none" color="#FFF"> <title id="circleOkIconTitle">投稿者指定のタグ</title> <polyline points="7 13 10 16 17 9"/> <circle cx="12" cy="12" r="10"/> </svg>`;
@@ -82,6 +102,12 @@ const addBadge = async (href) => {
     await sleep(100);
   }
 
+  while (!(await getSetting())) {
+    await sleep(100);
+  }
+  const setting = await getSetting();
+  console.log(setting);
+
   removeBadge();
 
   const tagDom = getTagDom().querySelectorAll("li");
@@ -91,10 +117,10 @@ const addBadge = async (href) => {
     const link = el.querySelector("a.gtm-new-work-tag-event-click");
     if (!link) return;
     const tagName = link.textContent;
-    if (tags[tagName]?.userId === authorId) {
+    if (tags[tagName]?.userId === authorId && setting["author-badge"]) {
       el.appendChild(checkBadge());
     }
-    if (tags[tagName]?.locked) {
+    if (tags[tagName]?.locked && setting["lock-badge"]) {
       el.appendChild(lockBadge());
     }
   });

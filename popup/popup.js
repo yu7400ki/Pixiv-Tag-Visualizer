@@ -1,8 +1,8 @@
 chrome.storage.local.get("tag_setting", (result) => {
   if (!result.tag_setting) {
     const tag_setting = {
-      "author-mark": true,
-      "lock-mark": true,
+      "author-badge": true,
+      "lock-badge": true,
       "author-tag": true,
       "lock-tag": true,
       "other-tag": true,
