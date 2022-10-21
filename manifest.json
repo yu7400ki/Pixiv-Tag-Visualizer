@@ -1,8 +1,8 @@
 {
   "name": "Pixiv Tag Visualizer",
   "description": "タグが投稿者によって付けられたか、また、ロックされているかを可視化する拡張機能です。",
-  "version": "0.1.0",
   "manifest_version": 2,
+  "version": "0.2.0",
   "icons": {
     "128": "icons/128.png"
   },
