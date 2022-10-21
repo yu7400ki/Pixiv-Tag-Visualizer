@@ -44,6 +44,27 @@ const sleep = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
+const removeBadge = () => {
+  const badged = document.querySelectorAll('[class^="gg-icon"]');
+  badged.forEach((el) => el.remove());
+};
+
+const checkBadge = () => {
+  const wrapper = document.createElement("div");
+  wrapper.classList.add("gg-icon-check");
+  wrapper.setAttribute("data-descr", "投稿者指定のタグ");
+  wrapper.appendChild(checkSvg.cloneNode(true));
+  return wrapper;
+};
+
+const lockBadge = () => {
+  const wrapper = document.createElement("div");
+  wrapper.classList.add("gg-icon-lock");
+  wrapper.setAttribute("data-descr", "ロックされたタグ");
+  wrapper.appendChild(lockSvg.cloneNode(true));
+  return wrapper;
+};
+
 const addBadge = async (href) => {
   if (!href.match(/^https:\/\/www.pixiv.net\/artworks\/\d+$/)) return;
   const response = await fetch(href);
@@ -61,8 +82,7 @@ const addBadge = async (href) => {
     await sleep(100);
   }
 
-  const badged = document.querySelectorAll('[class^="gg-icon"]');
-  badged.forEach((el) => el.remove());
+  removeBadge();
 
   const tagDom = getTagDom().querySelectorAll("li");
 
@@ -72,18 +92,10 @@ const addBadge = async (href) => {
     if (!link) return;
     const tagName = link.textContent;
     if (tags[tagName]?.userId === authorId) {
-      const wrapper = document.createElement("div");
-      wrapper.classList.add("gg-icon-check");
-      wrapper.setAttribute("data-descr", "投稿者指定のタグ");
-      wrapper.appendChild(checkSvg.cloneNode(true));
-      el.appendChild(wrapper);
+      el.appendChild(checkBadge());
     }
     if (tags[tagName]?.locked) {
-      const wrapper = document.createElement("div");
-      wrapper.classList.add("gg-icon-lock");
-      wrapper.setAttribute("data-descr", "ロックされたタグ");
-      wrapper.appendChild(lockSvg.cloneNode(true));
-      el.appendChild(wrapper);
+      el.appendChild(lockBadge());
     }
   });
 };
