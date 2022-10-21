@@ -16,3 +16,7 @@
   width: 15px;
   stroke: #3d7597;
 }
+
+.disable-tag {
+  display: none !important;
+}

@@ -69,6 +69,11 @@ const removeBadge = () => {
   badged.forEach((el) => el.remove());
 };
 
+const removeDisable = () => {
+  const disable = document.querySelectorAll(".disable-tag");
+  disable.forEach((el) => el.classList.remove("disable-tag"));
+};
+
 const checkBadge = () => {
   const wrapper = document.createElement("div");
   wrapper.classList.add("gg-icon-check");
@@ -106,9 +111,9 @@ const addBadge = async (href) => {
     await sleep(100);
   }
   const setting = await getSetting();
-  console.log(setting);
 
   removeBadge();
+  removeDisable();
 
   const tagDom = getTagDom().querySelectorAll("li");
 
@@ -116,12 +121,32 @@ const addBadge = async (href) => {
     el.classList.add("tag-li");
     const link = el.querySelector("a.gtm-new-work-tag-event-click");
     if (!link) return;
+    el.classList.add("disable-tag");
     const tagName = link.textContent;
-    if (tags[tagName]?.userId === authorId && setting["author-badge"]) {
-      el.appendChild(checkBadge());
+    let other = true;
+
+    if (tags[tagName]?.userId === authorId) {
+      other = false;
+      if (setting["author-badge"]) {
+        el.appendChild(checkBadge());
+      }
+      if (setting["author-tag"]) {
+        el.classList.remove("disable-tag");
+      }
     }
-    if (tags[tagName]?.locked && setting["lock-badge"]) {
-      el.appendChild(lockBadge());
+
+    if (tags[tagName]?.locked) {
+      other = false;
+      if (setting["lock-badge"]) {
+        el.appendChild(lockBadge());
+      }
+      if (setting["lock-tag"]) {
+        el.classList.remove("disable-tag");
+      }
+    }
+
+    if (other && setting["other-tag"]) {
+      el.classList.remove("disable-tag");
     }
   });
 };
