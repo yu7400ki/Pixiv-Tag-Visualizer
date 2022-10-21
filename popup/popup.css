@@ -1,11 +1,5 @@
 * {
   margin: 0;
-}
-
-html,
-body {
-  width: 18rem;
-  height: 10rem;
   user-select: none;
 }
 
