@@ -8,7 +8,7 @@ module.exports = {
     popup: path.join(__dirname, "src/popup.ts"),
   },
   output: {
-    path: path.join(__dirname, "dist/js"),
+    path: path.join(__dirname, "dist/scripts"),
     filename: "[name].js",
   },
   module: {

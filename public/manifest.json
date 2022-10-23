@@ -8,13 +8,13 @@
   },
   "action": {
     "default_icon": "icons/128.png",
-    "default_popup": "popup/popup.html"
+    "default_popup": "pages/popup.html"
   },
   "permissions": ["storage"],
   "content_scripts": [
     {
-      "js": ["tag/tag.js"],
-      "css": ["tag/tag.css"],
+      "js": ["scripts/content.js"],
+      "css": ["styles/content.css"],
       "matches": ["https://www.pixiv.net/*"],
       "run_at": "document_start"
     }
