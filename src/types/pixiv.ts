@@ -4,6 +4,12 @@ export type IllustResponse = {
   body: IllustBody;
 };
 
+export type NovelResponse = {
+  error: boolean;
+  message: string;
+  body: NovelBody;
+};
+
 export type IllustBody = {
   illustId: string;
   illustTitle: string;
@@ -24,6 +30,20 @@ export type IllustBody = {
   userId: string;
   userName: string;
   userAccount: string;
+};
+
+export type NovelBody = {
+  id: string;
+  title: string;
+  description: string;
+  createDate: string;
+  uploadDate: string;
+  restrict: number;
+  xRestrict: number;
+  content: string;
+  tags: Tag;
+  userName: string;
+  userId: string;
 };
 
 export type Urls = {

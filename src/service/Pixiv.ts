@@ -1,4 +1,4 @@
-import { IllustResponse, Tags } from '../types/Illust';
+import { IllustResponse, Tags } from '../types/pixiv';
 
 export class Illust {
   illust: IllustResponse;

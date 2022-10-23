@@ -1,6 +1,6 @@
 import { Setting } from './service/Chrome';
 import { Illust } from './service/Pixiv';
-import { Tags } from './types/Illust';
+import { Tags } from './types/pixiv';
 
 const getIllustId = (href: string) => {
   const illustId = href.match(/^https:\/\/www.pixiv.net\/artworks\/(\d+)$/);
