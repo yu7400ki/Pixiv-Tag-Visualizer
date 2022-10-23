@@ -1,5 +1,5 @@
 import { Setting } from './service/Chrome';
-import { Illust } from './service/Pixiv';
+import { Illust, Novel } from './service/Pixiv';
 import { Tags } from './types/pixiv';
 
 const getIllustId = (href: string) => {
@@ -9,7 +9,16 @@ const getIllustId = (href: string) => {
   return illustId[1];
 };
 
-const getIllustTagDom = () => {
+const getNovelId = (href: string) => {
+  const novelId = href.match(
+    /^https:\/\/www.pixiv.net\/novel\/show\.php\?id=(\d+)$/,
+  );
+
+  if (!novelId) return null;
+  return novelId[1];
+};
+
+const getTagDom = () => {
   return document.querySelector('ul.sc-pj1a4x-0.gZfuPH');
 };
 
@@ -47,21 +56,29 @@ const lockBadge = () => {
 
 const editBadge = async (href: string) => {
   const illustId = getIllustId(href);
-  if (!illustId) return;
+  const novelId = getNovelId(href);
 
-  await sleep(500);
-  while (!getIllustTagDom()) {
+  if (!illustId && !novelId) return;
+
+  await sleep(1000);
+  while (!getTagDom()) {
     await sleep(500);
   }
 
   removeBadge();
   removeDisable();
 
-  const illust = await Illust.init(Number(illustId));
+  const contents = await (async () => {
+    if (illustId) {
+      return await Illust.init(Number(illustId));
+    } else {
+      return await Novel.init(Number(novelId));
+    }
+  })();
+  const tagDom = getTagDom()?.querySelectorAll('li');
   const setting = await Setting.get();
-  const tags = illust.tags();
-  const authorId = illust.author;
-  const tagDom = getIllustTagDom()?.querySelectorAll('li');
+  const tags = contents.tags();
+  const authorId = contents.author;
 
   console.log(tags);
 
