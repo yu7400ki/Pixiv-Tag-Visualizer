@@ -3,19 +3,12 @@
   align-items: center;
 }
 
-[class^="gg-icon"] {
+[class^='gg-icon'] {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: 2px;
-}
-
-[class^="gg-icon"] > svg {
-  height: 15px;
-  width: 15px;
-  stroke: #3d7597;
-  stroke-width: 1.6;
 }
 
 .disable-tag {

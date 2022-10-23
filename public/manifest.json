@@ -1,22 +1,28 @@
 {
   "name": "Pixiv Tag Visualizer",
   "description": "タグが投稿者によって付けられたか、また、ロックされているかを可視化する拡張機能です。",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "manifest_version": 3,
   "icons": {
     "128": "icons/128.png"
   },
   "action": {
     "default_icon": "icons/128.png",
-    "default_popup": "popup/popup.html"
+    "default_popup": "pages/popup.html"
   },
   "permissions": ["storage"],
   "content_scripts": [
     {
-      "js": ["tag/tag.js"],
-      "css": ["tag/tag.css"],
+      "js": ["scripts/content.js"],
+      "css": ["styles/content.css"],
       "matches": ["https://www.pixiv.net/*"],
       "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*"],
+      "matches": ["https://www.pixiv.net/*"]
     }
   ]
 }
